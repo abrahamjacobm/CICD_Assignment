@@ -11,9 +11,9 @@ COPY requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Copy the entire project directory into the container's working directory
-COPY train.py /code/train.py
-COPY test.py /code/test.py
-
+#COPY train.py /code/train.py
+#COPY test.py /code/test.py
+COPY . /code/
 # Command to train the model during image build (optional)
 # Adjust as needed based on your project structure and requirements
 RUN python train.py
