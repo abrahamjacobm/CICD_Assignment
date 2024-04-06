@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+      - both-action-success
 
 jobs:
   run-and-validate:
