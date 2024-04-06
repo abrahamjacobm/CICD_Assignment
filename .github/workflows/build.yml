@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Train (Build and Push Docker Image)
 
 on:
   pull_request:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   build-and-push:
+    name: Train
     runs-on: ubuntu-latest
 
     steps:
