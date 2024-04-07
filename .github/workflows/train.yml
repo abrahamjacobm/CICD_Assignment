@@ -31,4 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: abrahamjacobm/CICD_Assignment:latest
+          tags: abrahamjacobm/cicd_assignment:latest
