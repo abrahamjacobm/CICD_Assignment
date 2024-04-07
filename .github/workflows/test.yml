@@ -2,14 +2,27 @@ name: Test
 
 on:
   workflow_run:
-    workflows: ["Train"]
+    workflows:
+      - "Train"
     types:
       - completed
+  pull_request:
+    branches:
+      - main
+      - both-action-success
 
 jobs:
+  dummy-job:
+    name: Dummy Job (Independent)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dummy Step
+        run: echo "This is a dummy job for workflow trigger."
+
   validate-docker-image:
     name: Validate Docker Image
     runs-on: ubuntu-latest
+    needs: build-and-push
 
     steps:
       - name: Checkout code
