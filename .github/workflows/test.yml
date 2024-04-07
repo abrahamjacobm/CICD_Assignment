@@ -25,7 +25,7 @@ jobs:
         run: |
           output_score=$(docker run jacsdocker/cicd_assignment:latest | grep -oP '0\.\d+')
           if (( $(echo "$output_score > 0.30" | bc -l) )); then
-            echo "Score is greater than 0.30"
+            echo "Ok Score is greater than 0.30"
             exit 0
           else
             echo "Score is less than or equal to 0.30"

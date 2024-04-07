@@ -32,7 +32,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: jacsdocker/cicd_assignment:latest
-
-      - name: Set output
-        id: set_output
-        run: echo "::set-output name=docker_image_tag::latest"
