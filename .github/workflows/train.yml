@@ -32,3 +32,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: jacsdocker/cicd_assignment:latest
+
+    outputs:
+      docker_image_tag: ${{ steps.build_image.outputs.image_tag }}
