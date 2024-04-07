@@ -1,8 +1,8 @@
-name: Test (Pull and Validate Docker Image)
+name: Test
 
 on:
   workflow_run:
-    workflows: ["Train (Build and Push Docker Image)"]
+    workflows: ["Train"]
     types:
       - completed
 
