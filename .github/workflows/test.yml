@@ -19,14 +19,14 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Pull Docker image
-        run: docker pull abrahamjacobm/cicd_assignment:latest
+        run: docker pull abrahamjacobm/CICD_Assignment:latest
 
       - name: Run Docker container
-        run: docker run abrahamjacobm/cicd_assignment:latest
+        run: docker run abrahamjacobm/CICD_Assignment:latest
 
       - name: Extract and validate score
         run: |
-          output_score=$(docker run abrahamjacobm/cicd_assignment:latest | grep -oP '0\.\d+')
+          output_score=$(docker run abrahamjacobm/CICD_Assignment:latest | grep -oP '0\.\d+')
           if (( $(echo "$output_score > 0.30" | bc -l) )); then
             echo "Score is greater than 0.30"
             exit 0
