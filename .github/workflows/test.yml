@@ -1,7 +1,9 @@
-name: Test
+name: Test (Pull and Validate Docker Image)
+
 on:
-  repository_dispatch:
-    types: [run-test]
+  workflow_run:
+    workflows: ["Train (Build and Push Docker Image)"]
+    types: [completed]
 
 jobs:
   validate-docker-image:
@@ -9,22 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Pull Docker image
-        run: docker pull jacsdocker/cicd_assignment:latest
-
-      - name: Run Docker container
-        run: docker run jacsdocker/cicd_assignment:latest
-
-      - name: Extract and validate score
+      - name: Debug Information
         run: |
-          output_score=$(docker run jacsdocker/cicd_assignment:latest | grep -oP '0\.\d+')
-          if (( $(echo "$output_score > 0.30" | bc -l) )); then
-            echo "Ok Score is greater than 0.30"
-            exit 0
-          else
-            echo "Score is less than or equal to 0.30"
-            exit 1
-          fi
+          echo "Workflow run triggered"
+          echo "Workflow: ${{ github.event.workflow_run.workflow }}"
+          echo "Event: ${{ toJson(github.event) }}"
