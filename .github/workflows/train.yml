@@ -32,12 +32,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: jacsdocker/cicd_assignment:latest
-
-      - name: Dispatch test workflow
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          event-type: run-test
-    
-    outputs:
-      docker_image_tag: ${{ steps.build_image.outputs.image_tag }}
